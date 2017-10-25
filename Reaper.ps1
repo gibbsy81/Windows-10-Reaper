@@ -1,10 +1,24 @@
-Write-Host 'Windows 10 Reaper by Nicholas White and Tomas Gibbs';
-Write-Host 'This Application removes Bloatware from Windows 10 Use at your own risk the creators of this applicaion will not be held responcible for any damages caused.';
-Write-Host 'Would you like to Remove or Install.'
-Write-Host 'The Following Applications will be removed from the System if you continue.'
-Write-Host -NoNewLine 'Press any key to Debloat';
-$null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
-Clear-Host
+#configuration
+$debugmode=
+<#
+function menu\{
+Switch (menu @("Debloat", "Reinstall Apps", "Quit")) {
+"Debloat" {Debloat}
+"Reinstall Apps" {echo test"}
+}
+#>
+Switch (menu @("Debloat", "Reinstall Apps", "Quit")) {
+  "Debloat" { }
+  "Reinstall Apps" {test}
+  "Quit" {}
+}
+
+function test{
+echo test
+Start-Sleep -s 10
+}
+
+function Debloat{
 #3D Builder: 
 Write-Host 'Removing 3D Builder'
 Get-AppxPackage *3dbuilder* | Remove-AppxPackage
@@ -98,3 +112,4 @@ Clear-Host
 Write-Host 'Removing Xbox'
 Get-AppxPackage *xboxapp* | Remove-AppxPackage
 Clear-Host
+}
