@@ -113,7 +113,7 @@ Get-AppxPackage *xboxapp* | Remove-AppxPackage
 function Reinstall_Apps
 {
     Write-Host 'Functionality Not yet implamented'
-    //TODO
+    #TODO
 }
 
 function InstallKeySpotlight
