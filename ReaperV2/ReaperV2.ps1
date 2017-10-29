@@ -118,12 +118,13 @@ function Reinstall_Apps
 
 function InstallKeySpotlight
 {
-    Write-Host 'Functionality Not yet implamented'
-    //TODO
+    Write-Host 'Merging Content Delivery Manager Disbale Key'
+    Execute-Process -FilePath “reg.exe” -Parameters “import $dirSupportFiles RegKeys\ContentDeliveryManager.reg ” -PassThru
 }
 
 function InstallKeyConsumer
 {
-    Write-Host 'Functionality Not yet implamented'
-    //TODO
+    Write-Host 'Merging Cloud Content Disable Key'
+    
+    Execute-Process -FilePath “reg.exe” -Parameters “import $dirSupportFiles RegKeys\CloudContent.reg ” -PassThru
 }
