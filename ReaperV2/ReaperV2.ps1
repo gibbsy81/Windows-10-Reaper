@@ -1,16 +1,27 @@
-#Installing PS-Menu (Must be Running as Admin)
-Install-Module -Name ps-menu 
-#Main Menu
-Switch (menu @("Debloat", "Disable Windows Spotlight", 
-    "Disable Windows Consumer Features", "Reinstall Apps", "Quit")) {
-  "Debloat" {Uninstall}
-  "Disable Windows Spotlight"{InstallKeySpotlight}
-  "Disable Windows Consumer Features"{InstallKeyConsumer}
-  "Reinstall Apps" {}
-  "Quit" {Write-Host 'Quitting'}
+#Calling the Main Menu Function
+main-menu
+
+#Main Menu Function
+function main-menu
+{
+    Write-Host ' #1 Uninstall Apps' 
+    Write-Host ' #2 Reinstall Apps' 
+    Write-Host ' #3 Install Key Spotlight' 
+    Write-Host ' #4 Install Key Consumer' 
+    $MenuSelection = read-host
+
+    
+    Switch ($MenuSelection){
+    '1' {'Uninstall'}
+    '2' {'Reinstall_Apps'}
+    '3' {'InstallKeySpotlight'}
+    '4' {'InstallKeyConsumer'}	
+    }
 }
+
 #Uninstall Apps
-function Uninstall{
+function Uninstall
+{
 Write-Host 'Working'
 
 #3D Builder: 
@@ -105,8 +116,6 @@ Get-AppxPackage *bingweather* | Remove-AppxPackage
 #Xbox: 
 Write-Host 'Removing Xbox'
 Get-AppxPackage *xboxapp* | Remove-AppxPackage
-
-
 }
 
 
