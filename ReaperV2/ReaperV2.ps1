@@ -1,15 +1,14 @@
-#Calling the Main Menu Function
-menu
+
 
 #Main Menu Function
-function menu
+function MenuMain
 {
     Write-Host ' #1 Uninstall Apps' 
     Write-Host ' #2 Reinstall Apps' 
     Write-Host ' #3 Install Key Spotlight' 
     Write-Host ' #4 Install Key Consumer' 
     
-    while(true)
+    while('true')
     {
     $MenuSelection = read-host
 
@@ -23,6 +22,11 @@ function menu
         }
     }
 }
+
+
+#Calling the Main Menu Function
+MenuMain
+
 
 #Uninstall Apps
 function Uninstall
@@ -43,7 +47,7 @@ Write-Host 'Removing Alarms and Clock'
 Get-AppxPackage *windowscalculator* | Remove-AppxPackage
 
 #Calendar and Mail: 
-Write-Host 'Calender and Mail'
+Write-Host 'Removing Calender and Mail'
 Get-AppxPackage *windowscommunicationsapps* | Remove-AppxPackage
 
 #Camera: 
