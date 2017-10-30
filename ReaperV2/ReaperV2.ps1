@@ -1,4 +1,4 @@
-
+#Defining Functions
 
 #Main Menu Function
 function MenuMain
@@ -7,6 +7,7 @@ function MenuMain
     Write-Host ' #2 Reinstall Apps' 
     Write-Host ' #3 Install Key Spotlight' 
     Write-Host ' #4 Install Key Consumer' 
+    Write-Host ' #5 Quit'
     
     while('true')
     {
@@ -18,14 +19,32 @@ function MenuMain
         '1' {Uninstall}
         '2' {Reinstall_Apps}
         '3' {InstallKeySpotlight}
-        '4' {InstallKeyConsumer}	
+        '4' {InstallKeyConsumer}
+        '5' {End}
         }
     }
 }
 
+#Reinstall Apps Function
 
-#Calling the Main Menu Function
-MenuMain
+function Reinstall_Apps
+{
+    Write-Host 'Functionality Not yet implamented'
+    #TODO
+}
+
+function InstallKeySpotlight
+{
+    Write-Host 'Merging Content Delivery Manager Disbale Key'
+    Execute-Process -FilePath “reg.exe” -Parameters “import $dirSupportFiles RegKeys\ContentDeliveryManager.reg ” -PassThru
+}
+
+function InstallKeyConsumer
+{
+    Write-Host 'Merging Cloud Content Disable Key'
+    
+    Execute-Process -FilePath “reg.exe” -Parameters “import $dirSupportFiles RegKeys\CloudContent.reg ” -PassThru
+}
 
 
 #Uninstall Apps
@@ -37,7 +56,6 @@ Write-Host 'Working'
 Write-Host 'Removing 3D Builder'
 Get-AppxPackage *3dbuilder* | Remove-AppxPackage
 
-$null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
 #Alarms and Clock: 
 Write-Host 'Removing Alarms and Clock'
 Get-AppxPackage *windowsalarms* | Remove-AppxPackage
@@ -127,22 +145,14 @@ Write-Host 'Removing Xbox'
 Get-AppxPackage *xboxapp* | Remove-AppxPackage
 }
 
-
-function Reinstall_Apps
+function End
 {
-    Write-Host 'Functionality Not yet implamented'
-    #TODO
+Write-Host 'Ending Bye'
+exit
 }
 
-function InstallKeySpotlight
-{
-    Write-Host 'Merging Content Delivery Manager Disbale Key'
-    Execute-Process -FilePath “reg.exe” -Parameters “import $dirSupportFiles RegKeys\ContentDeliveryManager.reg ” -PassThru
-}
+#Calling the Main Menu Function
+MenuMain
 
-function InstallKeyConsumer
-{
-    Write-Host 'Merging Cloud Content Disable Key'
-    
-    Execute-Process -FilePath “reg.exe” -Parameters “import $dirSupportFiles RegKeys\CloudContent.reg ” -PassThru
-}
+
+
