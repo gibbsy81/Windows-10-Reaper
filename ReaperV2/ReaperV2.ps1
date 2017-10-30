@@ -1,21 +1,26 @@
 #Calling the Main Menu Function
-main-menu
+menu
 
 #Main Menu Function
-function main-menu
+function menu
 {
     Write-Host ' #1 Uninstall Apps' 
     Write-Host ' #2 Reinstall Apps' 
     Write-Host ' #3 Install Key Spotlight' 
     Write-Host ' #4 Install Key Consumer' 
+    
+    while(true)
+    {
     $MenuSelection = read-host
 
     
-    Switch ($MenuSelection){
-    '1' {'Uninstall'}
-    '2' {'Reinstall_Apps'}
-    '3' {'InstallKeySpotlight'}
-    '4' {'InstallKeyConsumer'}	
+        Switch ($MenuSelection)
+        {
+        '1' {Uninstall}
+        '2' {Reinstall_Apps}
+        '3' {InstallKeySpotlight}
+        '4' {InstallKeyConsumer}	
+        }
     }
 }
 
